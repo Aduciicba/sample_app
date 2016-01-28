@@ -1,14 +1,16 @@
 require 'rails_helper'
+require 'capybara'
 
 RSpec.describe "StaticPages", type: :request do
+
+  subject { page }
+  before {visit root_path}
   describe "home_page" do
 
     it "must have home page" do
       get root_path
       expect(response).to have_http_status(200)
     end
-
-    before {visit root_path}
 
     it "must have text SampleApp" do
       #visit static_pages_home_path
